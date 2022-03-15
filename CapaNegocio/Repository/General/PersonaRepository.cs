@@ -14,6 +14,7 @@ namespace CapaNegocio.Repository.General
     {
         public Task<bool> Delete(int id)
         {
+            //Esto es un comentario desde Rama: dev_Andres
             throw new NotImplementedException();
         }
 
