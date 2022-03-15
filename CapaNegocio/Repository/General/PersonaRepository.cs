@@ -24,7 +24,7 @@ namespace CapaNegocio.Repository.General
             {
                 using (var sql = new NpgsqlConnection(Global._connectionString))
                 {
-                    using (var cmd = new NpgsqlCommand($"select nombres, apellidos, direccion from persona where id = :valor", sql))
+                    using (var cmd = new NpgsqlCommand($"select idpersona, nombres, apellidos, direccion from persona where id = :valor", sql))
                     {
                         cmd.Parameters.AddWithValue(":valor", id);
                         cmd.CommandType = System.Data.CommandType.Text;
