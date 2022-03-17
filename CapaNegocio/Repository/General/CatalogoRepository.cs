@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CapaNegocio.Models.General;
 using CapaNegocio.Repository;
 using CapaNegocio.Utils;
+using Dapper;
 using Npgsql;
 
 namespace CapaNegocio.Repository.General
@@ -23,33 +24,24 @@ namespace CapaNegocio.Repository.General
         }
         public async Task<List<Catalogo>> GetList(string codigopadre = "")
         {
-            List<Catalogo> catalogos = new List<Catalogo>();
+            var items = new List<Catalogo>();
             try
             {
-                using (var sql = new NpgsqlConnection(Global._connectionString))
+                using (var cnn = new NpgsqlConnection(Global._connectionString))
                 {
-                    using (var cmd = new NpgsqlCommand("select * from catalogo where codigopadre = @codigopadre order by descripcion", sql))
+                    string query = "SELECT * FROM catalogo";
+                    var param = new DynamicParameters();
+                    if (!codigopadre.Equals(""))
                     {
-                        cmd.Parameters.AddWithValue("@codigopadre", codigopadre);
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        sql.Open();
-                        using (var reader = await cmd.ExecuteReaderAsync())
-                        {
-                            while (await reader.ReadAsync())
-                            {
-                                var catalogo = new Catalogo();
-                                catalogo.Id = reader["id"] != System.DBNull.Value ? (int)reader["id"] : 0;
-                                catalogo.Codigo = reader["codigo"] != System.DBNull.Value ? (string)reader["codigo"] : "";
-                                catalogo.Descripcion = reader["descripcion"] != System.DBNull.Value ? (string)reader["descripcion"] : "";
-                                catalogo.Codigopadre = reader["codigopadre"] != System.DBNull.Value ? (string)reader["codigopadre"] : "";
-                                catalogos.Add(catalogo);
-                            }
-                        }
+                        query += " WHERE codigopadre = @codigopadre";
+                        param.Add("@codigopadre", codigopadre);
                     }
+                    var result = await cnn.QueryAsync<Catalogo>(query, param);
+                    items = result.ToList();
                 }
-                return catalogos;
+                return items;
             }
-            catch (NpgsqlException e) { System.Windows.Forms.MessageBox.Show(e.Message); return null; }
+            catch (NpgsqlException e) { return null; }
         }
         public async Task<bool> Save(Catalogo catalogo)
         {

@@ -1,4 +1,7 @@
 ﻿using CapaNegocio.Models.General;
+using CapaNegocio.Utils;
+using Dapper;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +22,19 @@ namespace CapaNegocio.Repository.General
             throw new NotImplementedException();
         }
 
-        public Task<List<Empresa>> GetList(string filter = "")
+        public async Task<List<Empresa>> GetList(string filter = "")
         {
-            throw new NotImplementedException();
+            var empresas = new List<Empresa>();
+            try
+            {
+                using (var cnn = new NpgsqlConnection(Global._connectionString))
+                {
+                    var result = await cnn.QueryAsync<Empresa>("SELECT * FROM empresa");
+                    empresas = result.ToList();
+                }
+                return empresas;
+            }
+            catch (NpgsqlException e) { return null; }
         }
 
         public Task<bool> Save(Empresa model)

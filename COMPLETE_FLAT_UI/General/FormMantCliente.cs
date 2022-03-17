@@ -24,6 +24,7 @@ namespace COMPLETE_FLAT_UI
             InitializeComponent();
             personaEdit = persona;
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
