@@ -20,5 +20,8 @@ namespace CapaNegocio.Models.Inventario
         public bool Grabaiva { get; set; }
         public int Categoriaid { get; set; }
         public int Empresaid { get; set; }
+        public int Subcategoriaid { get; set; }
+        public int Marcaid { get; set; }
+        public bool Estado { get; set; }
     }
 }
