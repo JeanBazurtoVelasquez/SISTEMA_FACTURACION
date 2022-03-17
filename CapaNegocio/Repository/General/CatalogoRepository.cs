@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaNegocio.Models.General;
 using CapaNegocio.Repository;
+using CapaNegocio.Utils;
+using Dapper;
+using Npgsql;
 
 namespace CapaNegocio.Repository.General
 {
@@ -19,19 +22,26 @@ namespace CapaNegocio.Repository.General
             catch (Exception ex) { }
             return retorno;
         }
-        public async Task<List<Catalogo>> GetList(string filter = "")
+        public async Task<List<Catalogo>> GetList(string codigopadre = "")
         {
-            List<Catalogo> retorno = new List<Catalogo>();
+            var items = new List<Catalogo>();
             try
             {
-
+                using (var cnn = new NpgsqlConnection(Global._connectionString))
+                {
+                    string query = "SELECT * FROM catalogo";
+                    var param = new DynamicParameters();
+                    if (!codigopadre.Equals(""))
+                    {
+                        query += " WHERE codigopadre = @codigopadre";
+                        param.Add("@codigopadre", codigopadre);
+                    }
+                    var result = await cnn.QueryAsync<Catalogo>(query, param);
+                    items = result.ToList();
+                }
+                return items;
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            return retorno;
+            catch (NpgsqlException e) { return null; }
         }
         public async Task<bool> Save(Catalogo catalogo)
         {

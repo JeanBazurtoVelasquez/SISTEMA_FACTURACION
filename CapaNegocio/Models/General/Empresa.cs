@@ -12,9 +12,9 @@ namespace CapaNegocio.Models.General
         {
         }
 
-        public int Id { get; set; }
-        public string Ruc { get; set; }
-        public string Nombre { get; set; }
-        public string Actividadcomercial { get; set; }
+        public int id { get; set; }
+        public string ruc { get; set; }
+        public string nombre { get; set; }
+        public string actividadcomercial { get; set; }
     }
 }
