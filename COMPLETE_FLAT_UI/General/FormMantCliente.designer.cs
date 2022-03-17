@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.BtnCerrar = new System.Windows.Forms.Button();
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtapellido = new System.Windows.Forms.TextBox();
             this.txtdireccion = new System.Windows.Forms.TextBox();
@@ -39,27 +40,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbTipoNip = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNip = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbSexo = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.txtFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.cmbProvincia = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cmbCanton = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cmbParroquia = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
             this.epMensaje = new System.Windows.Forms.ErrorProvider(this.components);
-            this.BtnCerrar = new System.Windows.Forms.Button();
+            this.cmbTipoPersona = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epMensaje)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +73,7 @@
             this.BarraTitulo.Controls.Add(this.BtnCerrar);
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
-            this.BarraTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BarraTitulo.Margin = new System.Windows.Forms.Padding(4);
             this.BarraTitulo.Name = "BarraTitulo";
             this.BarraTitulo.Size = new System.Drawing.Size(1032, 47);
             this.BarraTitulo.TabIndex = 2;
@@ -90,11 +92,26 @@
             this.label6.Text = "Formulario de Cliente";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnCerrar.FlatAppearance.BorderSize = 0;
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Image = global::COMPLETE_FLAT_UI.Properties.Resources.Close;
+            this.BtnCerrar.Location = new System.Drawing.Point(981, 0);
+            this.BtnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(51, 47);
+            this.BtnCerrar.TabIndex = 4;
+            this.BtnCerrar.UseVisualStyleBackColor = true;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            // 
             // txtnombre
             // 
             this.txtnombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnombre.Location = new System.Drawing.Point(43, 224);
-            this.txtnombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(439, 26);
             this.txtnombre.TabIndex = 3;
@@ -103,7 +120,7 @@
             // 
             this.txtapellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtapellido.Location = new System.Drawing.Point(549, 224);
-            this.txtapellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtapellido.Margin = new System.Windows.Forms.Padding(4);
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.Size = new System.Drawing.Size(413, 26);
             this.txtapellido.TabIndex = 4;
@@ -112,7 +129,7 @@
             // 
             this.txtdireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdireccion.Location = new System.Drawing.Point(41, 441);
-            this.txtdireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtdireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtdireccion.Multiline = true;
             this.txtdireccion.Name = "txtdireccion";
             this.txtdireccion.Size = new System.Drawing.Size(921, 80);
@@ -122,7 +139,7 @@
             // 
             this.txttelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttelefono.Location = new System.Drawing.Point(41, 570);
-            this.txttelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txttelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.Size = new System.Drawing.Size(267, 26);
             this.txttelefono.TabIndex = 6;
@@ -175,21 +192,21 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Teléfono:";
             // 
-            // button1
+            // btnGuardar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(380, 638);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 43);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(61)))), ((int)(((byte)(92)))));
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(380, 638);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(133, 43);
+            this.btnGuardar.TabIndex = 11;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -199,7 +216,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(549, 638);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(133, 43);
             this.btnCancelar.TabIndex = 12;
@@ -223,7 +240,7 @@
             // 
             this.txtid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtid.Location = new System.Drawing.Point(156, 87);
-            this.txtid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtid.Margin = new System.Windows.Forms.Padding(4);
             this.txtid.Name = "txtid";
             this.txtid.ReadOnly = true;
             this.txtid.Size = new System.Drawing.Size(85, 26);
@@ -254,14 +271,14 @@
             this.cmbTipoNip.Size = new System.Drawing.Size(200, 24);
             this.cmbTipoNip.TabIndex = 16;
             // 
-            // textBox1
+            // txtNip
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(272, 156);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(209, 26);
-            this.textBox1.TabIndex = 17;
+            this.txtNip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNip.Location = new System.Drawing.Point(272, 156);
+            this.txtNip.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNip.Name = "txtNip";
+            this.txtNip.Size = new System.Drawing.Size(209, 26);
+            this.txtNip.TabIndex = 17;
             // 
             // label8
             // 
@@ -275,18 +292,18 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Sexo:";
             // 
-            // comboBox2
+            // cmbSexo
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cmbSexo.FormattingEnabled = true;
+            this.cmbSexo.Items.AddRange(new object[] {
             "No Definido",
             "Masculino",
             "Femenino"});
-            this.comboBox2.Location = new System.Drawing.Point(43, 297);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(199, 24);
-            this.comboBox2.TabIndex = 20;
+            this.cmbSexo.Location = new System.Drawing.Point(43, 297);
+            this.cmbSexo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbSexo.Name = "cmbSexo";
+            this.cmbSexo.Size = new System.Drawing.Size(199, 24);
+            this.cmbSexo.TabIndex = 20;
             // 
             // label9
             // 
@@ -300,26 +317,26 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "Fecha de Nacimiento:";
             // 
-            // dateTimePicker1
+            // txtFechaNacimiento
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(272, 297);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(283, 22);
-            this.dateTimePicker1.TabIndex = 22;
+            this.txtFechaNacimiento.Location = new System.Drawing.Point(272, 297);
+            this.txtFechaNacimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFechaNacimiento.Name = "txtFechaNacimiento";
+            this.txtFechaNacimiento.Size = new System.Drawing.Size(283, 22);
+            this.txtFechaNacimiento.TabIndex = 22;
             // 
-            // comboBox3
+            // cmbProvincia
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cmbProvincia.FormattingEnabled = true;
+            this.cmbProvincia.Items.AddRange(new object[] {
             "No Definido",
             "Masculino",
             "Femenino"});
-            this.comboBox3.Location = new System.Drawing.Point(43, 366);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(265, 24);
-            this.comboBox3.TabIndex = 24;
+            this.cmbProvincia.Location = new System.Drawing.Point(43, 366);
+            this.cmbProvincia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProvincia.Name = "cmbProvincia";
+            this.cmbProvincia.Size = new System.Drawing.Size(265, 24);
+            this.cmbProvincia.TabIndex = 24;
             // 
             // label10
             // 
@@ -333,18 +350,18 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "Provincia:";
             // 
-            // comboBox4
+            // cmbCanton
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cmbCanton.FormattingEnabled = true;
+            this.cmbCanton.Items.AddRange(new object[] {
             "No Definido",
             "Masculino",
             "Femenino"});
-            this.comboBox4.Location = new System.Drawing.Point(367, 366);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(265, 24);
-            this.comboBox4.TabIndex = 26;
+            this.cmbCanton.Location = new System.Drawing.Point(367, 366);
+            this.cmbCanton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbCanton.Name = "cmbCanton";
+            this.cmbCanton.Size = new System.Drawing.Size(265, 24);
+            this.cmbCanton.TabIndex = 26;
             // 
             // label11
             // 
@@ -358,18 +375,18 @@
             this.label11.TabIndex = 25;
             this.label11.Text = "Canton:";
             // 
-            // comboBox5
+            // cmbParroquia
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.cmbParroquia.FormattingEnabled = true;
+            this.cmbParroquia.Items.AddRange(new object[] {
             "No Definido",
             "Masculino",
             "Femenino"});
-            this.comboBox5.Location = new System.Drawing.Point(697, 366);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(265, 24);
-            this.comboBox5.TabIndex = 28;
+            this.cmbParroquia.Location = new System.Drawing.Point(697, 366);
+            this.cmbParroquia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbParroquia.Name = "cmbParroquia";
+            this.cmbParroquia.Size = new System.Drawing.Size(265, 24);
+            this.cmbParroquia.TabIndex = 28;
             // 
             // label12
             // 
@@ -395,58 +412,70 @@
             this.label13.TabIndex = 30;
             this.label13.Text = "Correo:";
             // 
-            // textBox2
+            // txtCorreo
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(367, 570);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(596, 26);
-            this.textBox2.TabIndex = 29;
+            this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreo.Location = new System.Drawing.Point(367, 570);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(596, 26);
+            this.txtCorreo.TabIndex = 29;
             // 
             // epMensaje
             // 
             this.epMensaje.ContainerControl = this;
             // 
-            // BtnCerrar
+            // cmbTipoPersona
             // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnCerrar.FlatAppearance.BorderSize = 0;
-            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCerrar.Image = global::COMPLETE_FLAT_UI.Properties.Resources.Close;
-            this.BtnCerrar.Location = new System.Drawing.Point(981, 0);
-            this.BtnCerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(51, 47);
-            this.BtnCerrar.TabIndex = 4;
-            this.BtnCerrar.UseVisualStyleBackColor = true;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            this.cmbTipoPersona.FormattingEnabled = true;
+            this.cmbTipoPersona.Items.AddRange(new object[] {
+            "Cedula",
+            "Ruc",
+            "Pasaporte"});
+            this.cmbTipoPersona.Location = new System.Drawing.Point(549, 156);
+            this.cmbTipoPersona.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbTipoPersona.Name = "cmbTipoPersona";
+            this.cmbTipoPersona.Size = new System.Drawing.Size(200, 24);
+            this.cmbTipoPersona.TabIndex = 32;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label14.Location = new System.Drawing.Point(545, 133);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(136, 20);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Tipo de Persona:";
             // 
             // FormMantCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 708);
+            this.Controls.Add(this.cmbTipoPersona);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.cmbParroquia);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.cmbCanton);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cmbProvincia);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.txtFechaNacimiento);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cmbSexo);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNip);
             this.Controls.Add(this.cmbTipoNip);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtid);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -457,7 +486,7 @@
             this.Controls.Add(this.txtnombre);
             this.Controls.Add(this.BarraTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMantCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormMantCliente";
@@ -478,7 +507,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         public System.Windows.Forms.TextBox txtnombre;
         public System.Windows.Forms.TextBox txtapellido;
@@ -489,19 +518,21 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbTipoNip;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtNip;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbSexo;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.DateTimePicker txtFechaNacimiento;
+        private System.Windows.Forms.ComboBox cmbProvincia;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cmbCanton;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cmbParroquia;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.ErrorProvider epMensaje;
+        private System.Windows.Forms.ComboBox cmbTipoPersona;
+        private System.Windows.Forms.Label label14;
     }
 }
