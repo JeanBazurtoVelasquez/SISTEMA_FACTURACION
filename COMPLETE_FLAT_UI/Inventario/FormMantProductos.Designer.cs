@@ -30,6 +30,12 @@ namespace COMPLETE_FLAT_UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.BtnCerrar = new System.Windows.Forms.Button();
@@ -60,7 +66,7 @@ namespace COMPLETE_FLAT_UI
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPrecios = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPrecios = new System.Windows.Forms.DataGridView();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,7 +82,7 @@ namespace COMPLETE_FLAT_UI
             this.tabInfoGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             this.tabPrecios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrecios)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +120,7 @@ namespace COMPLETE_FLAT_UI
             this.BtnCerrar.Size = new System.Drawing.Size(38, 38);
             this.BtnCerrar.TabIndex = 4;
             this.BtnCerrar.UseVisualStyleBackColor = true;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // epMensaje
             // 
@@ -125,7 +132,7 @@ namespace COMPLETE_FLAT_UI
             this.tabControl1.Controls.Add(this.tabPrecios);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 38);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(819, 528);
@@ -158,9 +165,9 @@ namespace COMPLETE_FLAT_UI
             this.tabInfoGeneral.Controls.Add(this.txtNombre);
             this.tabInfoGeneral.Controls.Add(this.label7);
             this.tabInfoGeneral.Location = new System.Drawing.Point(4, 22);
-            this.tabInfoGeneral.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabInfoGeneral.Margin = new System.Windows.Forms.Padding(2);
             this.tabInfoGeneral.Name = "tabInfoGeneral";
-            this.tabInfoGeneral.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabInfoGeneral.Padding = new System.Windows.Forms.Padding(2);
             this.tabInfoGeneral.Size = new System.Drawing.Size(811, 502);
             this.tabInfoGeneral.TabIndex = 0;
             this.tabInfoGeneral.Text = "Información General";
@@ -169,19 +176,21 @@ namespace COMPLETE_FLAT_UI
             // btnImagen
             // 
             this.btnImagen.Location = new System.Drawing.Point(652, 210);
-            this.btnImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImagen.Margin = new System.Windows.Forms.Padding(2);
             this.btnImagen.Name = "btnImagen";
-            this.btnImagen.Size = new System.Drawing.Size(121, 19);
+            this.btnImagen.Size = new System.Drawing.Size(121, 25);
             this.btnImagen.TabIndex = 93;
             this.btnImagen.Text = "Subir/Cambiar Imagen";
             this.btnImagen.UseVisualStyleBackColor = true;
+            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
             // 
             // picImagen
             // 
             this.picImagen.Location = new System.Drawing.Point(634, 67);
-            this.picImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picImagen.Margin = new System.Windows.Forms.Padding(2);
             this.picImagen.Name = "picImagen";
             this.picImagen.Size = new System.Drawing.Size(160, 139);
+            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picImagen.TabIndex = 92;
             this.picImagen.TabStop = false;
             // 
@@ -190,7 +199,7 @@ namespace COMPLETE_FLAT_UI
             this.chkIva.AutoSize = true;
             this.chkIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkIva.Location = new System.Drawing.Point(141, 251);
-            this.chkIva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkIva.Margin = new System.Windows.Forms.Padding(2);
             this.chkIva.Name = "chkIva";
             this.chkIva.Size = new System.Drawing.Size(108, 21);
             this.chkIva.TabIndex = 91;
@@ -238,9 +247,10 @@ namespace COMPLETE_FLAT_UI
             // 
             // cmbSubCategoria
             // 
+            this.cmbSubCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubCategoria.FormattingEnabled = true;
             this.cmbSubCategoria.Location = new System.Drawing.Point(460, 186);
-            this.cmbSubCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbSubCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSubCategoria.Name = "cmbSubCategoria";
             this.cmbSubCategoria.Size = new System.Drawing.Size(159, 21);
             this.cmbSubCategoria.TabIndex = 83;
@@ -258,13 +268,10 @@ namespace COMPLETE_FLAT_UI
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Items.AddRange(new object[] {
-            "No Definido",
-            "Masculino",
-            "Femenino"});
             this.cmbCategoria.Location = new System.Drawing.Point(268, 186);
-            this.cmbCategoria.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbCategoria.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(159, 21);
             this.cmbCategoria.TabIndex = 81;
@@ -283,13 +290,10 @@ namespace COMPLETE_FLAT_UI
             // 
             // cmbMarca
             // 
+            this.cmbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarca.FormattingEnabled = true;
-            this.cmbMarca.Items.AddRange(new object[] {
-            "No Definido",
-            "Masculino",
-            "Femenino"});
             this.cmbMarca.Location = new System.Drawing.Point(26, 186);
-            this.cmbMarca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbMarca.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(200, 21);
             this.cmbMarca.TabIndex = 79;
@@ -307,9 +311,10 @@ namespace COMPLETE_FLAT_UI
             // 
             // cmbEmpresa
             // 
+            this.cmbEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmpresa.FormattingEnabled = true;
             this.cmbEmpresa.Location = new System.Drawing.Point(26, 67);
-            this.cmbEmpresa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEmpresa.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEmpresa.Name = "cmbEmpresa";
             this.cmbEmpresa.Size = new System.Drawing.Size(203, 21);
             this.cmbEmpresa.TabIndex = 75;
@@ -416,44 +421,55 @@ namespace COMPLETE_FLAT_UI
             // tabPrecios
             // 
             this.tabPrecios.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPrecios.Controls.Add(this.dataGridView1);
+            this.tabPrecios.Controls.Add(this.dgvPrecios);
             this.tabPrecios.Controls.Add(this.panel1);
             this.tabPrecios.Location = new System.Drawing.Point(4, 22);
-            this.tabPrecios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPrecios.Margin = new System.Windows.Forms.Padding(2);
             this.tabPrecios.Name = "tabPrecios";
-            this.tabPrecios.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPrecios.Padding = new System.Windows.Forms.Padding(2);
             this.tabPrecios.Size = new System.Drawing.Size(811, 502);
             this.tabPrecios.TabIndex = 1;
             this.tabPrecios.Text = "Precios";
             // 
-            // dataGridView1
+            // dgvPrecios
             // 
-            this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPrecios.AllowUserToAddRows = false;
+            this.dgvPrecios.ColumnHeadersHeight = 29;
+            this.dgvPrecios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Unidad,
             this.Precio1,
             this.Precio2,
             this.Precio3,
             this.Precio4,
             this.Precio5});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 69);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(807, 431);
-            this.dataGridView1.TabIndex = 20;
+            this.dgvPrecios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPrecios.Location = new System.Drawing.Point(2, 69);
+            this.dgvPrecios.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvPrecios.Name = "dgvPrecios";
+            this.dgvPrecios.RowHeadersWidth = 51;
+            this.dgvPrecios.RowTemplate.Height = 24;
+            this.dgvPrecios.Size = new System.Drawing.Size(807, 431);
+            this.dgvPrecios.TabIndex = 20;
+            this.dgvPrecios.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrecios_CellEndEdit);
+            this.dgvPrecios.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrecios_CellValueChanged);
             // 
             // Unidad
             // 
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Unidad.DefaultCellStyle = dataGridViewCellStyle7;
             this.Unidad.HeaderText = "Unidad";
             this.Unidad.MinimumWidth = 6;
             this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
             this.Unidad.Width = 125;
             // 
             // Precio1
             // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Format = "N4";
+            dataGridViewCellStyle8.NullValue = "0";
+            this.Precio1.DefaultCellStyle = dataGridViewCellStyle8;
             this.Precio1.HeaderText = "Precio 1";
             this.Precio1.MinimumWidth = 6;
             this.Precio1.Name = "Precio1";
@@ -461,6 +477,11 @@ namespace COMPLETE_FLAT_UI
             // 
             // Precio2
             // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Format = "N4";
+            dataGridViewCellStyle9.NullValue = "0";
+            this.Precio2.DefaultCellStyle = dataGridViewCellStyle9;
             this.Precio2.HeaderText = "Precio 2";
             this.Precio2.MinimumWidth = 6;
             this.Precio2.Name = "Precio2";
@@ -468,6 +489,11 @@ namespace COMPLETE_FLAT_UI
             // 
             // Precio3
             // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Format = "N4";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.Precio3.DefaultCellStyle = dataGridViewCellStyle10;
             this.Precio3.HeaderText = "Precio 3";
             this.Precio3.MinimumWidth = 6;
             this.Precio3.Name = "Precio3";
@@ -475,6 +501,11 @@ namespace COMPLETE_FLAT_UI
             // 
             // Precio4
             // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.Format = "N4";
+            dataGridViewCellStyle11.NullValue = "0";
+            this.Precio4.DefaultCellStyle = dataGridViewCellStyle11;
             this.Precio4.HeaderText = "Precio 4";
             this.Precio4.MinimumWidth = 6;
             this.Precio4.Name = "Precio4";
@@ -482,6 +513,11 @@ namespace COMPLETE_FLAT_UI
             // 
             // Precio5
             // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.Format = "N4";
+            dataGridViewCellStyle12.NullValue = "0";
+            this.Precio5.DefaultCellStyle = dataGridViewCellStyle12;
             this.Precio5.HeaderText = "Precio 5";
             this.Precio5.MinimumWidth = 6;
             this.Precio5.Name = "Precio5";
@@ -493,7 +529,7 @@ namespace COMPLETE_FLAT_UI
             this.panel1.Controls.Add(this.cmbEstablecimiento);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(807, 67);
             this.panel1.TabIndex = 19;
@@ -511,16 +547,15 @@ namespace COMPLETE_FLAT_UI
             // 
             // cmbEstablecimiento
             // 
+            this.cmbEstablecimiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstablecimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstablecimiento.FormattingEnabled = true;
-            this.cmbEstablecimiento.Items.AddRange(new object[] {
-            "Cedula",
-            "Ruc",
-            "Pasaporte"});
             this.cmbEstablecimiento.Location = new System.Drawing.Point(8, 32);
-            this.cmbEstablecimiento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEstablecimiento.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEstablecimiento.Name = "cmbEstablecimiento";
-            this.cmbEstablecimiento.Size = new System.Drawing.Size(151, 21);
+            this.cmbEstablecimiento.Size = new System.Drawing.Size(183, 23);
             this.cmbEstablecimiento.TabIndex = 18;
+            this.cmbEstablecimiento.SelectionChangeCommitted += new System.EventHandler(this.cmbEstablecimiento_SelectionChangeCommitted);
             // 
             // FormMantProductos
             // 
@@ -530,8 +565,9 @@ namespace COMPLETE_FLAT_UI
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.BarraTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormMantProductos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormMantProductos";
             this.Load += new System.EventHandler(this.FormMantProductos_Load);
             this.BarraTitulo.ResumeLayout(false);
@@ -542,7 +578,7 @@ namespace COMPLETE_FLAT_UI
             this.tabInfoGeneral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagen)).EndInit();
             this.tabPrecios.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrecios)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -581,15 +617,15 @@ namespace COMPLETE_FLAT_UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnImagen;
         private System.Windows.Forms.PictureBox picImagen;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPrecios;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbEstablecimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio5;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbEstablecimiento;
     }
 }

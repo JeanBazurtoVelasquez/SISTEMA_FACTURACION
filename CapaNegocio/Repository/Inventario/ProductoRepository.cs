@@ -1,8 +1,10 @@
 ﻿using CapaNegocio.Models.Inventario;
 using CapaNegocio.Utils;
+using Dapper;
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +19,27 @@ namespace CapaNegocio.Repository.Inventario
             throw new NotImplementedException();
         }
 
-        public Task<Producto> Get(int id)
+        public async Task<Producto> Get(int id)
         {
-            throw new NotImplementedException();
+            var item = new Producto();
+            try
+            {
+                using (var cnn = new NpgsqlConnection(Global._connectionString))
+                {
+                    string query = "SELECT * FROM producto WHERE id = @idproducto";
+                    var param = new DynamicParameters();
+                        param.Add("@idproducto", id);
+                    var result = await cnn.QueryAsync<Producto>(query, param);
+                    item = result.FirstOrDefault();
+                }
+                return item;
+            }
+            catch (NpgsqlException e) { return null; }
         }
 
         public async Task<List<Producto>> GetList(string filter = "")
         {
-            var productos = new List<Producto>();
+            var productos = new List<Producto>(); 
             try
             {
                 using (var sql = new NpgsqlConnection(Global._connectionString))
@@ -51,12 +66,39 @@ namespace CapaNegocio.Repository.Inventario
                                 item.Marcaid = reader["marcaid"] != DBNull.Value ? (int)reader["marcaid"] : 0;
                                 item.Empresaid = reader["empresaid"] != DBNull.Value ? (int)reader["empresaid"] : 0;
                                 item.Estado = reader["estado"] != DBNull.Value ? (bool)reader["estado"] : false;
+                                item.image = reader["image"] != DBNull.Value ? (string)reader["image"] : "";
                                 productos.Add(item);
                             }
                         }
                     }
                 }
                 return productos;
+            }
+            catch (NpgsqlException e) { return null; }
+        }
+
+        public async Task<DataTable> GetListProduct(string filter = "", string estado = "ACTIVO")
+        {
+            var dt = new DataTable();
+            try
+            {
+                using (var sql = new NpgsqlConnection(Global._connectionString))
+                {
+                    using (var cmd = new NpgsqlCommand("fngetproductos", sql))
+                    {
+                        cmd.Parameters.AddWithValue("varestado", estado);
+                        cmd.Parameters.AddWithValue("varfiltro", filter);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        sql.Open();
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            dt.Load(reader);
+                            for(int i= 0; i < dt.Columns.Count; i++)
+                                dt.Columns[i].ColumnName = dt.Columns[i].ColumnName.Replace('_', ' ').ToUpper();
+                        }
+                    }
+                }
+                return dt;
             }
             catch (NpgsqlException e) { return null; }
         }
@@ -81,6 +123,7 @@ namespace CapaNegocio.Repository.Inventario
                         cmd.Parameters.AddWithValue("_subcategoriaid", model.Subcategoriaid);
                         cmd.Parameters.AddWithValue("_marcaid", model.Marcaid);
                         cmd.Parameters.AddWithValue("_empresaid", model.Empresaid);
+                        cmd.Parameters.AddWithValue("_image", model.image==null?"":model.image);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.CommandTimeout = 0;
 
@@ -96,7 +139,6 @@ namespace CapaNegocio.Repository.Inventario
             }
             catch (Exception e)
             {
-                return false;
                 throw new Exception(e.Message);
             }
         }
