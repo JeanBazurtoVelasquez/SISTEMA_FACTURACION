@@ -1,5 +1,7 @@
 ﻿using CapaNegocio.Models.General;
 using CapaNegocio.Repository.General;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +63,7 @@ namespace COMPLETE_FLAT_UI
                 txtnombre.Text    = personaEdit.Nombres;
                 txtapellido.Text  = personaEdit.Apellidos;
                 txtdireccion.Text = personaEdit.Direccion ?? "";
+                txtGeo.Text       = personaEdit.Geolocalizacion ?? "";
                 txttelefono.Text  = personaEdit.Telefono ?? "";
                 txtCorreo.Text    = personaEdit.Correo ?? "";
                 txtFechaNacimiento.Value =  DateTime.ParseExact(personaEdit.Fechanacimiento.Split(' ')[0], "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -85,6 +88,7 @@ namespace COMPLETE_FLAT_UI
             personaEdit.Nombres = txtnombre.Text;
             personaEdit.Apellidos = txtapellido.Text  ;
             personaEdit.Direccion = txtdireccion.Text ;
+            personaEdit.Geolocalizacion = txtGeo.Text ;
             personaEdit.Parroquiaid = 0;
             personaEdit.Telefono = txttelefono.Text;
             personaEdit.Correo = txtCorreo.Text;
@@ -121,6 +125,16 @@ namespace COMPLETE_FLAT_UI
             else
             {
                 MessageBox.Show("No se ha podido registrar la información");
+            }
+        }
+
+        private void btnBuscarWS_Click(object sender, EventArgs e)
+        {
+            string datos = personasRepo.wsDatosPersona(txtNip.Text);
+            if (datos != "") { 
+                var objDatos = JsonConvert.DeserializeObject<JObject>(datos);
+                var objDatosPersonales = objDatos.GetValue("contribuyente").ToObject<JObject>();
+                txtnombre.Text = objDatosPersonales.GetValue("nombreComercial").ToString();
             }
         }
     }

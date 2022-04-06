@@ -96,8 +96,9 @@ namespace COMPLETE_FLAT_UI
                 miProducto.Empresaid = (int)cmbEmpresa.SelectedValue;
                 miProducto.Marcaid = ((Catalogo)cmbMarca.SelectedItem).id;
                 miProducto.Categoriaid = ((Catalogo)cmbCategoria.SelectedItem).id;
-                miProducto.Subcategoriaid = ((Catalogo)cmbSubCategoria.SelectedItem).id;
+                miProducto.Subcategoriaid = 0;//((Catalogo)cmbSubCategoria.SelectedItem).id;
                 miProducto.Grabaiva = chkIva.Checked;
+                MessageBox.Show("Test");
 
                 if(picImagen.Image != null && (miProducto.image == null || miProducto.image.Equals("")))
                     miProducto.image = Guid.NewGuid().ToString() + ".png"; ;

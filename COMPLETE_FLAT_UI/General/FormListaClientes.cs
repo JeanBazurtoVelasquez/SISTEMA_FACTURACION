@@ -27,15 +27,19 @@ namespace COMPLETE_FLAT_UI
 
         private void FormListaClientes_Load(object sender, EventArgs e)
         {
+            cmbTipoPersona.ValueMember = "id";
+            cmbTipoPersona.DisplayMember = "descripcion";
+            cmbTipoPersona.DataSource = personasRepo.GetTipoPersona();
+            cmbTipoPersona.SelectedIndex = -1;
             InsertarFilas();
         }
 
         private async void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (tblClientes.SelectedRows.Count > 0)
             {
                 var persona = new Persona();
-                persona = await personasRepo.Get(id: (int) dataGridView1.CurrentRow.Cells[0].Value);
+                persona = await personasRepo.Get(id: (int) tblClientes.CurrentRow.Cells[0].Value);
                 FormMantCliente frm = new FormMantCliente(persona);
                 frm.ShowDialog();
              
@@ -46,32 +50,48 @@ namespace COMPLETE_FLAT_UI
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            var persona = new Persona();
+            /*var persona = new Persona();
             persona.Id = 0;
             FormMantCliente frm = new FormMantCliente(persona);
+            frm.ShowDialog();*/
+            FormPuntoVenta frm = new FormPuntoVenta();
             frm.ShowDialog();
         }
 
-        private void InsertarFilas()
+        private async void InsertarFilas()
         {
-
-            Invoke(new MethodInvoker(async delegate {
-
-                dataGridView1.DataSource = await personasRepo.GetList();
-
-            }));
-            /*dataGridView1.Rows.Insert(0, "1", "Rafael", "Fernandez", "AV. Melgar", "56465");*/
+            tblClientes.DataSource = await personasRepo.ListarPersonasAsync(cmbTipoPersona.GetItemText(cmbTipoPersona.SelectedItem), txtBuscar.Text);
+            for (int i = 0; i < tblClientes.Columns.Count; i++)
+            {
+                tblClientes.Columns[i].HeaderText = ((tblClientes.Columns[i].HeaderText).ToUpper()).Replace("_"," ");
+            }
+        }
+        private void ResizeControls()
+        {
+            //tblClientes.Width = Width - 200;
+            //tblClientes.Height = Height - 150;
+            panel1.Width = Width - 200;
+            panel1.Height = Height - 150;
         }
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void FormListaClientes_Resize(object sender, EventArgs e)
         {
-            FormListaProductos frm = Owner as FormListaProductos;
-            this.Close();
+            ResizeControls();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void FormListaClientes_Shown(object sender, EventArgs e)
         {
+            ResizeControls();
+        }
 
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            InsertarFilas();
+        }
+
+        private void cmbTipoPersona_TextChanged(object sender, EventArgs e)
+        {
+            InsertarFilas();
         }
     }
 }

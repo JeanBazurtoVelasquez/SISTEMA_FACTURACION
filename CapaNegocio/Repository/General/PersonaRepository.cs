@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio.Models.General;
 using CapaNegocio.Utils;
 using Npgsql;
+using RestSharp;
 
 namespace CapaNegocio.Repository.General
 {
@@ -44,6 +47,7 @@ namespace CapaNegocio.Repository.General
                                 persona.Apellidos = reader["apellidos"] != System.DBNull.Value ? (string)reader["apellidos"] : "";
                                 persona.Parroquiaid = reader["parroquiaid"] != System.DBNull.Value ? (int)reader["parroquiaid"] : 0;
                                 persona.Direccion = reader["direccion"] != System.DBNull.Value ? (string)reader["direccion"] : "";
+                                persona.Geolocalizacion = reader["geolocalizacion"] != System.DBNull.Value ? (string)reader["geolocalizacion"] : "";
                                 persona.Fechanacimiento = reader["fechanacimiento"] != System.DBNull.Value ? reader["fechanacimiento"].ToString() : "";
                                 persona.Sexo = reader["sexo"] != System.DBNull.Value ? (int)reader["sexo"] : 0;
                                 persona.Telefono = reader["telefono"] != System.DBNull.Value ? (string)reader["telefono"] : "";
@@ -110,6 +114,7 @@ namespace CapaNegocio.Repository.General
                         cmd.Parameters.AddWithValue("_fechanacimiento", persona.Fechanacimiento);
                         cmd.Parameters.AddWithValue("_telefono", persona.Telefono);
                         cmd.Parameters.AddWithValue("_correo", persona.Correo);
+                        cmd.Parameters.AddWithValue("_geolocalizacion", persona.Geolocalizacion);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.CommandTimeout = 0;
 
@@ -193,6 +198,39 @@ namespace CapaNegocio.Repository.General
             cmb.DisplayMember = "descripcion";
             cmb.DataSource = tiposPersona;
             cmb.SelectedIndex = -1;*/
+        }
+
+        public async Task<DataTable> ListarPersonasAsync(string tipopersona, string filtro)
+        {
+            DataTable tabla = new DataTable();
+            try
+            {
+                using (var sql = new NpgsqlConnection(Global._connectionString))
+                {
+                    using (var cmd = new NpgsqlCommand("fngetpersonas", sql))
+                    {
+                        cmd.Parameters.AddWithValue("vartipopersona", tipopersona);
+                        cmd.Parameters.AddWithValue("varfiltro", filtro);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        sql.Open();
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            tabla.Load(reader);
+                        }
+                    }
+                }
+                return tabla;
+            }
+            catch (NpgsqlException e) { MessageBox.Show(e.Message.ToString()); return null; }
+        }
+
+        public string wsDatosPersona(string ci) {
+            string datos = "";
+            using (WebClient cliente = new WebClient())
+            {
+                datos = cliente.DownloadString($"https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/{ci}");
+            }
+            return datos;
         }
     }
 }
