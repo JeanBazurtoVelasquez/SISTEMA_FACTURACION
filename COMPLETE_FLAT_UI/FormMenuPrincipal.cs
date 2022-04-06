@@ -139,10 +139,12 @@ namespace COMPLETE_FLAT_UI
             if (panelMenu.Width == 230)
             {
                 this.tmContraerMenu.Start();
+                ShowHidePerfil(false);
             }
             else if (panelMenu.Width == 55)
             {
                 this.tmExpandirMenu.Start();
+                ShowHidePerfil();
             }
 
             //-------SIN EFECTO 
@@ -153,6 +155,15 @@ namespace COMPLETE_FLAT_UI
             //else
 
             //    panelMenu.Width = 55;
+        }
+
+        private void ShowHidePerfil(bool show = true)
+        {
+            pbImageUser.Visible = show;
+            lblNombreUser.Visible = show;
+            lblPerfilUser.Visible = show;
+            lbFecha.Visible = show;
+            lblHora.Visible = show;
         }
 
         private void tmExpandirMenu_Tick(object sender, EventArgs e)
@@ -253,6 +264,8 @@ namespace COMPLETE_FLAT_UI
                 }
                 file.Close();
             }
+
+            Global._path_image_productos = Application.StartupPath + @"\images\producto";
         }
     }
 }

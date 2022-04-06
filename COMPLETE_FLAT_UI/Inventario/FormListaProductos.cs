@@ -1,10 +1,12 @@
 ﻿using CapaNegocio.Models.Inventario;
 using CapaNegocio.Repository.Inventario;
+using CapaNegocio.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace COMPLETE_FLAT_UI
     public partial class FormListaProductos : Form
     {
         ProductoRepository productoRepo = new ProductoRepository();
+        ProductoPrecioRepository precioRepo = new ProductoPrecioRepository();
+        string path = Application.StartupPath + "\\images";
         public FormListaProductos()
         {
             InitializeComponent();
@@ -41,23 +45,23 @@ namespace COMPLETE_FLAT_UI
 
         private void FormMembresia_Load(object sender, EventArgs e)
         {
+            cmbEstado.SelectedIndex = 0;
             CargarDatos();
         }
 
         private async void CargarDatos()
         {
-            dgvProductos.DataSource = await productoRepo.GetList();
+            dgvProductos.DataSource = await productoRepo.GetListProduct(txtFiltro.Text.ToLower().Trim(), cmbEstado.Text);
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             FormMantProductos frmMantProducto = new FormMantProductos();
-            frmMantProducto.WindowState = FormWindowState.Maximized;
             if (frmMantProducto.ShowDialog() == DialogResult.OK)
                 CargarDatos();
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private async void btnEditar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -65,14 +69,15 @@ namespace COMPLETE_FLAT_UI
                     MessageBox.Show("Seleccione un registro para editar");
                 else
                 {
-                    var ls = (List<Producto>)dgvProductos.DataSource;
-                    if (ls != null)
+                    var prod = await productoRepo.Get((int)dgvProductos.CurrentRow.Cells[0].Value);
+
+                    FormMantProductos frmMantProducto = new FormMantProductos(prod);
+                    if (frmMantProducto.ShowDialog() == DialogResult.OK)
+                        CargarDatos();
+                    else
                     {
-                        var prod = ls[dgvProductos.CurrentRow.Index];
-                        FormMantProductos frmMantProducto = new FormMantProductos(prod);
-                        frmMantProducto.WindowState = FormWindowState.Maximized;
-                        if (frmMantProducto.ShowDialog() == DialogResult.OK)
-                            CargarDatos();
+                        dgvProductos.Rows[dgvProductos.CurrentRow.Index].Selected = true;
+                        dgvProductos.Focus();
                     }
                 }
             }
@@ -90,13 +95,14 @@ namespace COMPLETE_FLAT_UI
                     MessageBox.Show("Seleccione un registro para editar");
                 else 
                 {
-                    var ls = (List<Producto>)dgvProductos.DataSource;
-                    var prod = ls[dgvProductos.CurrentRow.Index];
-                    if (MessageBox.Show("¿Está seguro que desea cambiar el estado?", prod.Nombre, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    var nameProd = (string)dgvProductos.CurrentRow.Cells[3].Value;
+                    var id = (int)dgvProductos.CurrentRow.Cells[0].Value;
+                    var estadoAct = (string)dgvProductos.CurrentRow.Cells[10].Value;
+                    if (MessageBox.Show("¿Está seguro que desea cambiar el estado?", nameProd, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                     {
-                        if (await productoRepo.CambiaEstado(prod.Id, !prod.Estado))
+                        if (await productoRepo.CambiaEstado(id, !estadoAct.Equals("ACTIVO")))
                         {
-                            MessageBox.Show("Se cambió el estado de " + prod.Nombre);
+                            MessageBox.Show("Se cambió el estado de " + nameProd);
                             CargarDatos();
                         }
                     }
@@ -105,6 +111,47 @@ namespace COMPLETE_FLAT_UI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cmbEstado_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //CargarDatos();
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //CargarDatos();
+        }
+
+        private void cmbEstado_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private async void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dgvProductos.RowCount > 0)
+            {
+                btnEliminar.Text = dgvProductos.Rows[e.RowIndex].Cells[10].Value.ToString().Equals("ACTIVO") ? "Eliminar" : "Activar";
+                await precioRepo.FillGridByProducto(dgvPrecios, (int)dgvProductos.Rows[e.RowIndex].Cells[0].Value);
+
+                try
+                {
+                    picImage.Image = null;
+                    string image = dgvProductos.Rows[e.RowIndex].Cells[11].Value.ToString();
+                    if (!image.Equals("") && File.Exists(Global._path_image_productos + @"\" + image))
+                        picImage.Load(Global._path_image_productos + @"\" + image);
+                }
+                catch (Exception ex) {
+                    //Console.WriteLine(ex.Message);
+                    return;
+                }
             }
         }
     }

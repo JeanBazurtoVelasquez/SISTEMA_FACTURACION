@@ -10,5 +10,6 @@ namespace CapaNegocio.Utils
     {
         public static string _connectionString { get; set; }
         public static string URLDatosCI { get; set; }
+        public static string _path_image_productos { get; set; }
     }
 }
