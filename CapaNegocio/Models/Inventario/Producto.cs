@@ -23,5 +23,6 @@ namespace CapaNegocio.Models.Inventario
         public int Subcategoriaid { get; set; }
         public int Marcaid { get; set; }
         public bool Estado { get; set; }
+        public string image { get; set; }
     }
 }

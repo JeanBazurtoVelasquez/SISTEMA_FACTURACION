@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaNegocio.Models;
+using CapaNegocio.Utils;
+using Dapper;
+using Npgsql;
 
 namespace CapaNegocio.Repository.General
 {
@@ -19,9 +22,20 @@ namespace CapaNegocio.Repository.General
             throw new NotImplementedException();
         }
 
-        public Task<List<Establecimiento>> GetList(string filter = "")
+        public async Task<List<Establecimiento>> GetList(string filter = "")
         {
-            throw new NotImplementedException();
+            var items = new List<Establecimiento>();
+            try
+            {
+                using (var cnn = new NpgsqlConnection(Global._connectionString))
+                {
+                    string query = "SELECT * FROM establecimiento";
+                    var result = await cnn.QueryAsync<Establecimiento>(query, null);
+                    items = result.ToList();
+                }
+                return items;
+            }
+            catch (NpgsqlException e) { return null; }
         }
 
         public Task<bool> Save(Establecimiento model)
