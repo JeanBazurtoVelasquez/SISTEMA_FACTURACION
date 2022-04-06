@@ -62,6 +62,9 @@
             this.epMensaje = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmbTipoPersona = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtGeo = new System.Windows.Forms.TextBox();
+            this.btnBuscarWS = new System.Windows.Forms.Button();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epMensaje)).BeginInit();
             this.SuspendLayout();
@@ -113,7 +116,7 @@
             this.txtnombre.Location = new System.Drawing.Point(43, 224);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(439, 26);
+            this.txtnombre.Size = new System.Drawing.Size(454, 26);
             this.txtnombre.TabIndex = 3;
             // 
             // txtapellido
@@ -141,7 +144,7 @@
             this.txttelefono.Location = new System.Drawing.Point(41, 570);
             this.txttelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txttelefono.Name = "txttelefono";
-            this.txttelefono.Size = new System.Drawing.Size(267, 26);
+            this.txttelefono.Size = new System.Drawing.Size(201, 26);
             this.txttelefono.TabIndex = 6;
             // 
             // label2
@@ -277,7 +280,7 @@
             this.txtNip.Location = new System.Drawing.Point(272, 156);
             this.txtNip.Margin = new System.Windows.Forms.Padding(4);
             this.txtNip.Name = "txtNip";
-            this.txtNip.Size = new System.Drawing.Size(209, 26);
+            this.txtNip.Size = new System.Drawing.Size(150, 26);
             this.txtNip.TabIndex = 17;
             // 
             // label8
@@ -405,7 +408,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label13.Location = new System.Drawing.Point(360, 546);
+            this.label13.Location = new System.Drawing.Point(268, 546);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 20);
@@ -415,10 +418,10 @@
             // txtCorreo
             // 
             this.txtCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCorreo.Location = new System.Drawing.Point(367, 570);
+            this.txtCorreo.Location = new System.Drawing.Point(275, 570);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(596, 26);
+            this.txtCorreo.Size = new System.Drawing.Size(284, 26);
             this.txtCorreo.TabIndex = 29;
             // 
             // epMensaje
@@ -450,11 +453,45 @@
             this.label14.TabIndex = 31;
             this.label14.Text = "Tipo de Persona:";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label15.Location = new System.Drawing.Point(583, 546);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(133, 20);
+            this.label15.TabIndex = 34;
+            this.label15.Text = "Geolocalización:";
+            // 
+            // txtGeo
+            // 
+            this.txtGeo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGeo.Location = new System.Drawing.Point(590, 570);
+            this.txtGeo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtGeo.Name = "txtGeo";
+            this.txtGeo.Size = new System.Drawing.Size(372, 26);
+            this.txtGeo.TabIndex = 33;
+            // 
+            // btnBuscarWS
+            // 
+            this.btnBuscarWS.Location = new System.Drawing.Point(429, 156);
+            this.btnBuscarWS.Name = "btnBuscarWS";
+            this.btnBuscarWS.Size = new System.Drawing.Size(68, 26);
+            this.btnBuscarWS.TabIndex = 35;
+            this.btnBuscarWS.Text = "Buscar";
+            this.btnBuscarWS.UseVisualStyleBackColor = true;
+            this.btnBuscarWS.Click += new System.EventHandler(this.btnBuscarWS_Click);
+            // 
             // FormMantCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 708);
+            this.Controls.Add(this.btnBuscarWS);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtGeo);
             this.Controls.Add(this.cmbTipoPersona);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -534,5 +571,8 @@
         private System.Windows.Forms.ErrorProvider epMensaje;
         private System.Windows.Forms.ComboBox cmbTipoPersona;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        public System.Windows.Forms.TextBox txtGeo;
+        private System.Windows.Forms.Button btnBuscarWS;
     }
 }

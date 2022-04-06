@@ -1,6 +1,8 @@
 ﻿using CapaNegocio.Repository.General;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

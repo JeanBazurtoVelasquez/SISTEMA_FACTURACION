@@ -30,7 +30,6 @@ namespace COMPLETE_FLAT_UI
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
             LeerConfig();
-            ImprimePersona();
         }
         //METODO PARA REDIMENCIONAR/CAMBIAR TAMAÑO A FORMULARIO  TIEMPO DE EJECUCION ----------------------------------------------------------
         private int tolerance = 15;
@@ -250,19 +249,10 @@ namespace COMPLETE_FLAT_UI
                                                 + ";User Id=" + objCnn.GetValue("User")
                                                 + ";Password=" + objCnn.GetValue("Password")
                                                 + ";Database=" + objCnn.GetValue("Database") + ";";
+                    Global.URLDatosCI = objConfig.GetValue("URLDatosCI").ToString();
                 }
                 file.Close();
             }
         }
-
-        private async void ImprimePersona() {
-            personasModel = await personasRepo.GetList();
-            foreach (Persona persona in personasModel) { 
-                MessageBox.Show(persona.Direccion ?? "Ni gaver");
-            }
-        /*MessageBox.Show(personasModel[0].Nombres ?? "Ni gaver");*/
-        }
-
-
     }
 }
