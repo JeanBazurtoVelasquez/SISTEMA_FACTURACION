@@ -58,9 +58,7 @@ namespace COMPLETE_FLAT_UI.Inventario
                         tblItems.Rows[tblItems.Rows.Count - 1].Cells[7].Value = valorImpuesto;
                         tblItems.Rows[tblItems.Rows.Count - 1].Cells[8].Value = producto.Element("precioTotalSinImpuesto").Value;
                         tblItems.Rows[tblItems.Rows.Count - 1].Cells[9].Value = double.Parse(producto.Element("precioTotalSinImpuesto").Value, System.Globalization.CultureInfo.InvariantCulture) + valorImpuesto;
-                    }
-
-                    
+                    }                    
                 }
                 finally
                 {
