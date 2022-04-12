@@ -139,12 +139,12 @@ namespace COMPLETE_FLAT_UI
             //-------CON EFECTO SLIDING
             if (panelMenu.Width == 230)
             {
-                this.tmContraerMenu.Start();
+                //this.tmContraerMenu.Start();
                 ShowHidePerfil(false);
             }
             else if (panelMenu.Width == 55)
             {
-                this.tmExpandirMenu.Start();
+                //this.tmExpandirMenu.Start();
                 ShowHidePerfil();
             }
 
