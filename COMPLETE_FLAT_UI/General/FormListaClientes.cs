@@ -66,6 +66,7 @@ namespace COMPLETE_FLAT_UI
                 tblClientes.Columns[i].HeaderText = ((tblClientes.Columns[i].HeaderText).ToUpper()).Replace("_"," ");
             }
         }
+        
         private void ResizeControls()
         {
             //tblClientes.Width = Width - 200;

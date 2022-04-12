@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio.Repository.General;
 using CapaNegocio.Models.General;
+using COMPLETE_FLAT_UI.Inventario;
 
 namespace COMPLETE_FLAT_UI
 {
@@ -237,7 +238,20 @@ namespace COMPLETE_FLAT_UI
             lbFecha.Text = DateTime.Now.ToLongDateString();
             lblHora.Text = DateTime.Now.ToString("HH:mm:ssss");
         }
-        
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FormRegCompra fm = new FormRegCompra();
+            fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(fm);
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            FormRegCompra frm = new FormRegCompra();
+            frm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(frm);
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {

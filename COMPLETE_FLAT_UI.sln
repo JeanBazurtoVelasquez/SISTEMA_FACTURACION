@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMPLETE_FLAT_UI", "COMPLETE_FLAT_UI\COMPLETE_FLAT_UI.csproj", "{2C6921B3-8558-4914-8254-11C9EE505B00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentacion", "COMPLETE_FLAT_UI\CapaPresentacion.csproj", "{2C6921B3-8558-4914-8254-11C9EE505B00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocio", "CapaNegocio\CapaNegocio.csproj", "{AA885773-3756-4554-8A37-6E66EAE99B14}"
 EndProject

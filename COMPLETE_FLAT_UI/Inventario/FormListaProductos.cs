@@ -140,7 +140,6 @@ namespace COMPLETE_FLAT_UI
             {
                 btnEliminar.Text = dgvProductos.Rows[e.RowIndex].Cells[10].Value.ToString().Equals("ACTIVO") ? "Eliminar" : "Activar";
                 await precioRepo.FillGridByProducto(dgvPrecios, (int)dgvProductos.Rows[e.RowIndex].Cells[0].Value);
-
                 try
                 {
                     picImage.Image = null;
@@ -154,5 +153,6 @@ namespace COMPLETE_FLAT_UI
                 }
             }
         }
+
     }
 }
