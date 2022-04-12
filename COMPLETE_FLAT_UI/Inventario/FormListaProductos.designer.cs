@@ -73,9 +73,11 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.picImage);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(1098, 86);
+            this.groupBox1.Location = new System.Drawing.Point(772, 71);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(324, 212);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(272, 186);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "IMAGEN";
@@ -84,9 +86,10 @@
             // 
             this.picImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picImage.Image = ((System.Drawing.Image)(resources.GetObject("picImage.Image")));
-            this.picImage.Location = new System.Drawing.Point(3, 18);
+            this.picImage.Location = new System.Drawing.Point(2, 15);
+            this.picImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picImage.Name = "picImage";
-            this.picImage.Size = new System.Drawing.Size(318, 191);
+            this.picImage.Size = new System.Drawing.Size(268, 169);
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picImage.TabIndex = 0;
             this.picImage.TabStop = false;
@@ -96,9 +99,11 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dgvPrecios);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(1097, 304);
+            this.groupBox2.Location = new System.Drawing.Point(769, 276);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(325, 245);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(275, 237);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PRECIOS";
@@ -117,10 +122,11 @@
             this.colPrecio4,
             this.colPrecio5});
             this.dgvPrecios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPrecios.Location = new System.Drawing.Point(3, 18);
+            this.dgvPrecios.Location = new System.Drawing.Point(2, 15);
+            this.dgvPrecios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvPrecios.Name = "dgvPrecios";
             this.dgvPrecios.RowHeadersWidth = 51;
-            this.dgvPrecios.Size = new System.Drawing.Size(319, 224);
+            this.dgvPrecios.Size = new System.Drawing.Size(271, 220);
             this.dgvPrecios.TabIndex = 0;
             // 
             // colEstablecimiento
@@ -236,7 +242,8 @@
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
-            this.dgvProductos.Location = new System.Drawing.Point(3, 18);
+            this.dgvProductos.Location = new System.Drawing.Point(2, 15);
+            this.dgvProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -250,7 +257,7 @@
             this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(1069, 554);
+            this.dgvProductos.Size = new System.Drawing.Size(749, 450);
             this.dgvProductos.TabIndex = 23;
             this.dgvProductos.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_RowEnter);
             // 
@@ -265,9 +272,10 @@
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.Silver;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(25, 43);
+            this.btnNuevo.Location = new System.Drawing.Point(19, 35);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(87, 36);
+            this.btnNuevo.Size = new System.Drawing.Size(65, 29);
             this.btnNuevo.TabIndex = 24;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -281,10 +289,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.dgvProductos);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(16, 86);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 70);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1075, 575);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(753, 467);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado";
@@ -295,18 +303,20 @@
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(919, 35);
+            this.label1.Location = new System.Drawing.Point(722, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 25;
-            this.label1.Text = "Buscar:";
+            this.label1.Text = "Búsqueda:";
             // 
             // txtFiltro
             // 
             this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFiltro.Location = new System.Drawing.Point(922, 51);
+            this.txtFiltro.Location = new System.Drawing.Point(725, 41);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(165, 22);
+            this.txtFiltro.Size = new System.Drawing.Size(125, 20);
             this.txtFiltro.TabIndex = 26;
             this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             // 
@@ -321,9 +331,10 @@
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.Silver;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(123, 43);
+            this.btnEditar.Location = new System.Drawing.Point(92, 35);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(87, 36);
+            this.btnEditar.Size = new System.Drawing.Size(65, 29);
             this.btnEditar.TabIndex = 27;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -341,9 +352,10 @@
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.Silver;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(223, 43);
+            this.btnEliminar.Location = new System.Drawing.Point(167, 35);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(91, 36);
+            this.btnEliminar.Size = new System.Drawing.Size(68, 29);
             this.btnEliminar.TabIndex = 28;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -357,8 +369,9 @@
             this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCerrar.Image = global::COMPLETE_FLAT_UI.Properties.Resources.Close;
             this.BtnCerrar.Location = new System.Drawing.Point(0, 0);
+            this.BtnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(43, 43);
+            this.BtnCerrar.Size = new System.Drawing.Size(32, 35);
             this.BtnCerrar.TabIndex = 22;
             this.BtnCerrar.UseVisualStyleBackColor = true;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
@@ -370,9 +383,10 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "ACTIVO",
             "INACTIVO"});
-            this.cmbEstado.Location = new System.Drawing.Point(746, 50);
+            this.cmbEstado.Location = new System.Drawing.Point(593, 41);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(153, 24);
+            this.cmbEstado.Size = new System.Drawing.Size(116, 21);
             this.cmbEstado.TabIndex = 29;
             this.cmbEstado.SelectedIndexChanged += new System.EventHandler(this.cmbEstado_SelectedIndexChanged);
             this.cmbEstado.TextChanged += new System.EventHandler(this.cmbEstado_TextChanged);
@@ -383,18 +397,19 @@
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(743, 34);
+            this.label2.Location = new System.Drawing.Point(590, 28);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 30;
             this.label2.Text = "Estado:";
             // 
             // FormListaProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
-            this.ClientSize = new System.Drawing.Size(1434, 673);
+            this.ClientSize = new System.Drawing.Size(1055, 547);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.btnEliminar);
@@ -406,7 +421,6 @@
             this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormListaProductos";
             this.Text = "FormMembresia";
             this.Load += new System.EventHandler(this.FormMembresia_Load);
