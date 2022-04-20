@@ -50,11 +50,9 @@ namespace COMPLETE_FLAT_UI
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            /*var persona = new Persona();
+            var persona = new Persona();
             persona.Id = 0;
             FormMantCliente frm = new FormMantCliente(persona);
-            frm.ShowDialog();*/
-            FormPuntoVenta frm = new FormPuntoVenta();
             frm.ShowDialog();
         }
 

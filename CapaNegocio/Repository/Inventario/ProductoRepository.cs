@@ -1,5 +1,6 @@
 ﻿using CapaNegocio.Models.Inventario;
 using CapaNegocio.Utils;
+using CapaNegocio.ViewModels.Inventario;
 using Dapper;
 using Npgsql;
 using System;
@@ -29,6 +30,24 @@ namespace CapaNegocio.Repository.Inventario
                     string query = "SELECT * FROM producto WHERE id = @idproducto";
                     var param = new DynamicParameters();
                         param.Add("@idproducto", id);
+                    var result = await cnn.QueryAsync<Producto>(query, param);
+                    item = result.FirstOrDefault();
+                }
+                return item;
+            }
+            catch (NpgsqlException e) { return null; }
+        }
+
+        public async Task<Producto> GetByCodBar(string codigo)
+        {
+            var item = new Producto();
+            try
+            {
+                using (var cnn = new NpgsqlConnection(Global._connectionString))
+                {
+                    string query = "SELECT * FROM producto WHERE (codigo = @codigo or codigobarra = @codigo) AND estado = 't'";
+                    var param = new DynamicParameters();
+                    param.Add("@codigo", codigo);
                     var result = await cnn.QueryAsync<Producto>(query, param);
                     item = result.FirstOrDefault();
                 }
@@ -173,6 +192,18 @@ namespace CapaNegocio.Repository.Inventario
                 return false;
                 throw new Exception(e.Message);
             }
+        }
+
+        public async Task<ProductoVenta> GetProductoVenta(int productoid, int establecimientoid)
+        {
+            ProductoVenta item = new ProductoVenta();
+            try
+            {
+                item.producto = await Get(productoid);
+                item.listaPrecios = await ProductoPrecioRepository.ListByEstablecimiento(productoid, establecimientoid);
+                item.establecimientoid = establecimientoid;
+                return item;
+            }catch(Exception e) { return null; throw new Exception(e.Message); }
         }
     }
 }

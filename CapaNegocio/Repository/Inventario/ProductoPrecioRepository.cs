@@ -164,5 +164,31 @@ namespace CapaNegocio.Repository.Inventario
             }
             catch (NpgsqlException e) { return false; }
         }
+
+        public static async Task<List<ProductoPrecio>> ListByEstablecimiento(int productoid, int establecimientoid)
+        {
+            List<ProductoPrecio> lista = new List<ProductoPrecio>();
+            try
+            {
+                using (var cnn = new NpgsqlConnection(Global._connectionString))
+                {
+                    string query = "select up.id, up.unidadid, up.establecimientoid, un.descripcion as unidaddescripcion, " +
+                        "coalesce(up.precio1, 0) as precio1, coalesce(up.precio2, 0) as precio2, " +
+                        "coalesce(up.precio3, 0) as precio3, coalesce(up.precio4, 0) as precio4, coalesce(up.precio5, 0) as precio5 " +
+                        "from productoprecio up " +
+                        "join catalogo un on up.unidadid = un.id and un.codigopadre = 'UNIDAD' "+
+                        "WHERE up.productoid = @varproducto and up.establecimientoid = @varestablecimiento";
+                    var param = new DynamicParameters();
+                    param.Add("@varproducto", productoid);
+                    param.Add("@varestablecimiento", establecimientoid);
+
+                    var result = await cnn.QueryAsync<ProductoPrecio>(query, param);
+                    lista = result.ToList();
+
+                }
+                return lista;
+            }
+            catch (NpgsqlException e) { throw new Exception(e.Message); }
+        }
     }
 }

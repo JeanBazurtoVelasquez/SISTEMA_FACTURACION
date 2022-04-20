@@ -139,12 +139,12 @@ namespace COMPLETE_FLAT_UI
             //-------CON EFECTO SLIDING
             if (panelMenu.Width == 230)
             {
-                //this.tmContraerMenu.Start();
+                this.tmContraerMenu.Start();
                 ShowHidePerfil(false);
             }
-            else if (panelMenu.Width == 55)
+            else if (panelMenu.Width == 50)
             {
-                //this.tmExpandirMenu.Start();
+                this.tmExpandirMenu.Start();
                 ShowHidePerfil();
             }
 
@@ -172,16 +172,16 @@ namespace COMPLETE_FLAT_UI
             if (panelMenu.Width >= 230)
                 this.tmExpandirMenu.Stop();
             else
-                panelMenu.Width = panelMenu.Width + 5;
+                panelMenu.Width = panelMenu.Width + 15;
             
         }
 
         private void tmContraerMenu_Tick(object sender, EventArgs e)
         {
-            if (panelMenu.Width <= 55)
+            if (panelMenu.Width <= 50)
                 this.tmContraerMenu.Stop();
             else
-                panelMenu.Width = panelMenu.Width - 5;
+                panelMenu.Width = panelMenu.Width - 15;
         }
 
         //METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
@@ -251,6 +251,13 @@ namespace COMPLETE_FLAT_UI
             FormRegCompra frm = new FormRegCompra();
             frm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(frm);
+        }
+
+        private void btnPuntoVenta_Click(object sender, EventArgs e)
+        {
+
+            FormPuntoVenta frm = new FormPuntoVenta();
+            frm.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)

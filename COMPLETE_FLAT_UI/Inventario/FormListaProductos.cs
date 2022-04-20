@@ -19,8 +19,17 @@ namespace COMPLETE_FLAT_UI
         ProductoRepository productoRepo = new ProductoRepository();
         ProductoPrecioRepository precioRepo = new ProductoPrecioRepository();
         string path = Application.StartupPath + "\\images";
+        bool _modoBusqueda = false;
+        string _filtro = "";
+        public int _idproducto = 0;
         public FormListaProductos()
         {
+            InitializeComponent();
+        }
+        public FormListaProductos(bool modoBusqueda, string filtro)
+        {
+            _modoBusqueda = modoBusqueda;
+            _filtro = filtro;
             InitializeComponent();
         }
 
@@ -45,8 +54,15 @@ namespace COMPLETE_FLAT_UI
 
         private void FormMembresia_Load(object sender, EventArgs e)
         {
+            btnNuevo.Visible = !_modoBusqueda;
+            btnEditar.Visible = !_modoBusqueda;
+            btnEliminar.Visible = !_modoBusqueda;
             cmbEstado.SelectedIndex = 0;
+            cmbEstado.Enabled = !_modoBusqueda;
+            if (_modoBusqueda)
+                txtFiltro.Text = _filtro;
             CargarDatos();
+            dgvProductos.Focus();
         }
 
         private async void CargarDatos()
@@ -136,23 +152,51 @@ namespace COMPLETE_FLAT_UI
 
         private async void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1 && dgvProductos.RowCount > 0)
+            try
             {
-                btnEliminar.Text = dgvProductos.Rows[e.RowIndex].Cells[10].Value.ToString().Equals("ACTIVO") ? "Eliminar" : "Activar";
-                await precioRepo.FillGridByProducto(dgvPrecios, (int)dgvProductos.Rows[e.RowIndex].Cells[0].Value);
-                try
+                if (e.RowIndex > -1 && dgvProductos.RowCount > 0)
                 {
-                    picImage.Image = null;
-                    string image = dgvProductos.Rows[e.RowIndex].Cells[11].Value.ToString();
-                    if (!image.Equals("") && File.Exists(Global._path_image_productos + @"\" + image))
-                        picImage.Load(Global._path_image_productos + @"\" + image);
+                    btnEliminar.Text = dgvProductos.Rows[e.RowIndex].Cells[10].Value.ToString().Equals("ACTIVO") ? "Eliminar" : "Activar";
+                    await precioRepo.FillGridByProducto(dgvPrecios, (int)dgvProductos.Rows[e.RowIndex].Cells[0].Value);
+                    try
+                    {
+                        picImage.Image = null;
+                        string image = dgvProductos.Rows[e.RowIndex].Cells[11].Value.ToString();
+                        if (!image.Equals("") && File.Exists(Global._path_image_productos + @"\" + image))
+                            picImage.Load(Global._path_image_productos + @"\" + image);
+                    }
+                    catch (Exception ex)
+                    {
+                        //Console.WriteLine(ex.Message);
+                        return;
+                    }
                 }
-                catch (Exception ex) {
-                    //Console.WriteLine(ex.Message);
-                    return;
+            }
+            catch (Exception ex) { }
+        }
+
+        private void dgvProductos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(dgvProductos.CurrentRow.Index >= 0 && e.KeyCode == Keys.Enter)
+            {
+                if (_modoBusqueda)
+                {
+                    _idproducto = (int)dgvProductos.CurrentRow.Cells[0].Value;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
+                else
+                    btnEditar_Click(btnEditar, null);
             }
         }
 
+        private void txtFiltro_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                    dgvProductos.Focus();
+            }catch(Exception ex) { }
+        }
     }
 }
