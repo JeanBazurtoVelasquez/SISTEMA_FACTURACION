@@ -17,5 +17,6 @@ namespace CapaNegocio.Models.Inventario
         public decimal Precio3 { get; set; }
         public decimal Precio4 { get; set; }
         public decimal Precio5 { get; set; }
+        public string UnidadDescripcion { get; set; }
     }
 }

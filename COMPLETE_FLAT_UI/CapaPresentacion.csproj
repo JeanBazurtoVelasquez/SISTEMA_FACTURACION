@@ -81,10 +81,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPuntoVenta.cs">
+    <Compile Include="Inventario\FormPuntoVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPuntoVenta.Designer.cs">
+    <Compile Include="Inventario\FormPuntoVenta.Designer.cs">
       <DependentUpon>FormPuntoVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="General\FormListaClientes.cs">
@@ -140,7 +140,7 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormPuntoVenta.resx">
+    <EmbeddedResource Include="Inventario\FormPuntoVenta.resx">
       <DependentUpon>FormPuntoVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="General\FormListaClientes.resx">
